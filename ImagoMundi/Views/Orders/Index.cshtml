@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ImagoMundi.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_BackOfficeLayout.cshtml";
+}
+@{ViewData["ModelType"] = Model.GetType().GenericTypeArguments.FirstOrDefault(); }
+@{ViewData["ExcludeFields"] = new List<string>() { "Carts" }; }
+@{ViewData["Enums"] = new List<string>() { "StatusId" }; }
+
+<h2>Orders</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<partial name="~/Views/Shared/BackOffice/_GenericModelIndex.cshtml" view-data="ViewData" />

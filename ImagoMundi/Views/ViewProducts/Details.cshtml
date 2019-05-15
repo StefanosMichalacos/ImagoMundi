@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ViewProduct
+@{ViewProduct viewProduct = Model; }
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 item-photo">
+            <img style="max-width:100%;" src="@Html.DisplayFor(model => model.ImagePath)" />
+        </div>
+        <div class="col-xs-5" style="border:0px solid gray">
+            <!-- Datos del vendedor y titulo del producto -->
+            <h3>@Html.DisplayFor(model => model.Name)</h3>
+
+            <h5 style="padding:15px;">
+                @Html.DisplayFor(model => model.Description)
+            </h5>
+
+            <h3 style="margin-top:0px;">€ @Html.DisplayFor(model => model.Price)</h3>
+
+
+            
+
+            <!-- Botones de compra -->
+            <partial name="_AddToCartButton"/>
+        </div>
+
+
+    </div>
+</div>

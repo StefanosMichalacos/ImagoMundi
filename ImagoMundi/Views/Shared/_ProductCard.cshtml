@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ViewProduct viewProduct = (ViewProduct)this.ViewData["ViewProduct"]; }
+@model Cart
+
+
+@section Scripts{
+
+
+}
+
+
+<div class="col-lg-4 col-md-6 mb-4  showItem">
+    <div class="card cardColor">
+        <div style="height:55%;">
+            <a href="#"><img src="@viewProduct.ImagePath" alt="@viewProduct.Name" class="img-responsive productImage" /></a>
+        </div>
+        <div class="card-body" style="height:33%">
+            <div style="height:40%">
+                <h4 class="card-title">
+                    <a asp-controller="ViewProducts" asp-action="Details" asp-route-SKU="@viewProduct.SKU">@viewProduct.Name</a>
+                </h4>
+                <h5>€ @viewProduct.Price</h5>
+            </div>
+            <div style="height:60%">
+                <p class="card-text" style="max-height:90%; overflow:auto;">
+                    @if (!(viewProduct.Description is null))
+                    {
+                        @viewProduct.Description
+                    }
+                </p>
+            </div>
+        </div>
+        <div style="height:12%"><partial name="_AddToCartButton" /></div>
+    </div>
+</div>

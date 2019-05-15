@@ -1,0 +1,5 @@
+Client ID
+491642306588-ipo63isq3u55v33ilsos1nkhpnm0v0rf.apps.googleusercontent.com
+
+Client Secret
+4h1ronxG4pXs691-P5af_8je

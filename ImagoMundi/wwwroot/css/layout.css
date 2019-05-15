@@ -1,0 +1,137 @@
+﻿
+.backgroundSetUp {
+    background-color: lightgrey
+}
+.themeNavColor1 {
+    background: lightgrey;
+}
+.container{
+    padding:0px;
+    /*display:inline-block;*/
+}
+
+.just_cont {
+    padding-top: 5%;
+    
+}
+.fixPhotoPosition {
+    margin-top: -7%;
+}
+.colorizeNavBar {
+    background-color: #3C444C;
+   
+}
+.seperateBar {
+    width: 2px;
+    height: 20px;
+    background-color: red;
+}
+.position_of_menu {
+    float: right;
+    margin-right: 50px;
+}
+.positionLoginPartial{
+    margin-right:50px;
+}
+.positionNavHeader{
+    padding-left:50px;
+}
+.postionFormLogout{
+    margin-right:0px;
+}
+
+.loginStyle {
+    color: #3C444C !important;
+}
+
+/*------------------     drobdown menu on hover  -------------------------------------------------*/
+/* Style The Dropdown Button */
+.dropbtn {
+    /*background-color: #4CAF50;*/
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: lightgray !important;
+            color: #3C444C !important;
+        }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.secondrowmenu {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    background-color: #3C444C;
+    justify-content : flex-end
+   
+}
+
+.nav > li > a {
+    position: relative;
+    display: inline-block;
+    float: left;
+    
+}
+
+
+.logo {
+    width: 50px;
+    float: left;
+    margin-right: 22px;
+    padding: 3px;
+}
+
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .container {
+        /*display: inline-block;*/
+        margin: auto;
+    }
+}
+
+.cartButton {
+    height: 100%;
+    width: 100%;
+    color: whitesmoke;
+    background-color: #aa1a1a;
+    text-align: center;
+    font-size: 14px;
+    padding: 1px 25px;
+    border: outset;
+    border-width: thin;
+    border-color: black;
+}

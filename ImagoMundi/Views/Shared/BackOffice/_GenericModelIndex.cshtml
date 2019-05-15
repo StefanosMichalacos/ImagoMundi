@@ -1,0 +1,77 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Reflection
+@inject UserManager<AppUser> UserManager
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    List<string> enumsList = ViewData["Enums"] as List<string>;
+    Type modelType = (Type)ViewData["ModelType"];
+    List<string> excludeFieldNames = ViewData["ExcludeFields"] as List<string>;
+    IEnumerable<PropertyInfo> excludeFields = excludeFieldNames.Select(n => modelType.GetProperty(n));
+    IEnumerable<PropertyInfo> fields = modelType.GetProperties().Except(excludeFields);
+}
+<table class="table">
+    <thead>
+        <tr>
+            @foreach (var field in fields)
+            {
+                PropertyInfo property = modelType.GetProperty(field.Name);
+                string displayName = "";
+                var displayAttribute = property.CustomAttributes
+                    .Where(a => a.AttributeType == typeof(System.ComponentModel.DataAnnotations.DisplayAttribute)).FirstOrDefault();
+                if (displayAttribute != null)
+                {
+                    displayName = displayAttribute.NamedArguments
+                    .Where(n => n.MemberName == "Name").FirstOrDefault().TypedValue.ToString();
+                    displayName = displayName.Replace("\"", "");
+                }
+                if (displayName == "")
+                {
+                    displayName = field.Name.ToString();
+                }
+                <th>@displayName</th>
+            }
+        </tr>
+        @foreach (var item in Model)
+         {
+            <tr>
+                @foreach (PropertyInfo field in fields)
+                 {
+                    string htmlContent = "";
+                    var value = item.GetType().GetProperty(field.Name).GetValue(item);
+                    if (value != null)
+                    {
+                        htmlContent = value.ToString();
+
+                        if (enumsList.Any() && enumsList.Any(e => e == field.Name))
+                        {
+                            if (field.Name == "ContinentId")
+                            {
+                                htmlContent = ((ImagoMundi.Helpers.Enums.Continent)value).ToString();
+                            }
+
+                            if (field.Name == "StatusId")
+                            {
+                                htmlContent = ((ImagoMundi.Helpers.Enums.Status)value).ToString();
+                            }
+                        }
+
+                        if (field.PropertyType == typeof(Guid) && UserManager.FindByIdAsync(value.ToString()).Result != null)
+                        {
+                            htmlContent = UserManager.FindByIdAsync(value.ToString()).Result.UserName;
+                        }
+                    }
+                    <td>@htmlContent</td>
+                 }
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+         }
+    </thead>
+</table>
+
+

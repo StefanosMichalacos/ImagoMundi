@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+
+@section Scripts{
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script type="text/javascript" defer="defer">
+        $('.selectpicker').selectpicker({
+            //style: 'btn-dark',
+            //size: 4
+        });
+        //$(document).ready(function () { })
+        $(function () {
+            $("#ex2").slider({
+            });
+        });
+
+    </script>
+}
+
+<div class=" paddingCont">
+    @foreach (var product in ViewData["ViewProducts"] as IEnumerable<ViewProduct>)
+    {
+        await Html.RenderPartialAsync("_ProductCard", new ViewDataDictionary(ViewData) { { "ViewProduct", product } });
+    }
+</div>
+
+

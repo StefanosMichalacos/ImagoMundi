@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> UserManager
+@model IEnumerable<ImagoMundi.Models.AppUser>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_BackOfficeLayout.cshtml";
+}
+@{ViewData["ModelType"] = Model.GetType().GenericTypeArguments.FirstOrDefault(); }
+@{ViewData["ExcludeFields"] = new List<string>() {"Orders", "Carts", "NormalizedUserName", "NormalizedEmail", "EmailConfirmed", "PasswordHash",
+                                          "SecurityStamp", "ConcurrencyStamp", "PhoneNumberConfirmed", "TwoFactorEnabled", "LockoutEnd",
+                                          "LockoutEnabled","AccessFailedCount" }; }
+@{ViewData["Enums"] = new List<string>() { }; }
+
+
+<h2>Users</h2>
+
+<partial name="~/Views/Shared/BackOffice/_GenericModelIndex.cshtml" view-data="ViewData" />

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "SearchResults";
+}
+
+
+<ol class="breadcrumb imagoBreadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active">Results</li>
+</ol>
+@*<div class="row notResultRow">
+        <h2 class="resultMessage">Δέν βρέθηκαν αποτελέσματα για την αναζήτηση αυτή..</h2>
+    </div>*@
+
+<div class="topSellerBar">
+    <label class="topSellerLabel">Αποτελέσματα αναζήτησης</label>
+</div>
+
+<div class="row topSellerPanel">
+
+
+    @foreach (var product in ViewData["ViewProducts"] as IEnumerable<ViewProduct>)
+    {
+        await Html.RenderPartialAsync("_ProductCard", new ViewDataDictionary(ViewData) { { "ViewProduct", product } });
+    }
+
+
+</div>
+

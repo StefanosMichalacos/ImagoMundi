@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+@model IEnumerable<ImagoMundi.Models.ViewProduct>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    
+    <div class="carousel-inner fixPhotoPosition" >
+        <div class="item active">
+            <img src="~/images/networld.png" alt="ASP.NET" class="img-responsive" />
+            <div class="carousel-caption" role="option">
+                <p>
+                    <h2> Customize your map !</h2>
+
+                    <h5>Choose area, print material and the map's size</h5>
+
+                    <h3>PRINT IT</h3>
+                    <a class="btn btn-default" href="https://www.youtube.com/watch?v=kLrxbbP31NA">
+                        Check this
+                    </a>
+                </p>
+            </div>
+        </div>    
+    </div>  
+</div>
+
+<div class=" paddingCont">
+    <div class="topSellerBar">
+        <label class="topSellerLabel">BEST SELLER</label>
+    </div>
+    <div class="row topSellerPanel">
+        @foreach (var product in ViewData["ViewProducts"] as IEnumerable<ViewProduct>)
+        {
+            await Html.RenderPartialAsync("_ProductCard", new ViewDataDictionary(ViewData) { { "ViewProduct", product } });
+        }
+    </div>
+</div>
+
+

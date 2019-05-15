@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ImagoMundi.Models.Cart>
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_BackOfficeLayout.cshtml";
+}
+@{ViewData["ModelType"] = Model.GetType().GenericTypeArguments.FirstOrDefault(); }
+@{ViewData["ExcludeFields"] = new List<string>() { "UserId", "Order" }; }
+@{ViewData["Enums"] = new List<string>() { }; }
+
+<h2>Carts</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<partial name="~/Views/Shared/BackOffice/_GenericModelIndex.cshtml" view-data="ViewData" />

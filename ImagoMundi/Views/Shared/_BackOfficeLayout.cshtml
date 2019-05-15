@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewData["Title"] = "_BackOfficeLayout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ImagoMundi</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/fileupload/jquery.fileupload.css">
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/modelBody.css" />
+        <link rel="stylesheet" href="~/css/backgroundlayout.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+
+<nav class="navbar navbar-fixed-top ">
+    <div class=" colorizeNavBar ">
+        <div class="navbar-header positionNavHeader">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand lightgreyColored" >ImagoMundi</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a asp-area="" asp-controller="Home" asp-action="Index" class="lightgreyColored">Home</a></li>
+                <li><a asp-area="" asp-controller="Carts" asp-action="Index" class="lightgreyColored">Carts</a></li>
+                <li><a asp-area="" asp-controller="Maps" asp-action="Index" class="lightgreyColored">Maps</a></li>
+                <li><a asp-area="" asp-controller="Globes" asp-action="Index" class="lightgreyColored">Globes</a></li>
+                <li><a asp-area="" asp-controller="MapTypes" asp-action="Index" class="lightgreyColored">Map Types</a></li>
+                <li><a asp-area="" asp-controller="Countries" asp-action="Index" class="lightgreyColored">Countries</a></li>
+                <li><a asp-area="" asp-controller="Sizes" asp-action="Index" class="lightgreyColored">Sizes</a></li>
+                <li><a asp-area="" asp-controller="Discounts" asp-action="Index" class="lightgreyColored">Discounts</a></li>
+                <li><a asp-area="" asp-controller="Taxes" asp-action="Index" class="lightgreyColored">Taxes</a></li>
+                <li><a asp-area="" asp-controller="Materials" asp-action="Index" class="lightgreyColored">Materials</a></li>
+                <li><a asp-area="" asp-controller="Images" asp-action="Index" class="lightgreyColored">Images</a></li>
+                <li><a asp-area="" asp-controller="Orders" asp-action="Index" class="lightgreyColored">Orders</a></li>
+            </ul>
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>
+<body>
+    <div class="backgroundSetUp ">
+
+    <partial name="_CookieConsentPartial" />
+
+
+        <div class="just_cont body-content">
+
+            @RenderBody()
+            
+            <div class="footerClass">
+                <p>&copy; 2019 - ImagoMundi</p>
+            </div>
+        </div>
+
+        <environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+            <script src="~/js/vendor/jquery.ui.widget.js"></script>
+            <script src="~/js/fileupload/jquery.iframe-transport.js"></script>
+            <script src="https://blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+            <script src="https://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+            <script src="~/js/fileupload/jquery.fileupload.js"></script>
+            <script src="~/js/fileupload/jquery.fileupload-process.js"></script>
+            <script src="~/js/fileupload/jquery.fileupload-image.js"></script>
+            <script src="~/js/fileupload/jquery.fileupload-audio.js"></script>
+            <script src="~/js/fileupload/jquery.fileupload-video.js"></script>
+            <script src="~/js/fileupload/jquery.fileupload-validate.js"></script>
+            <script src="~/js/custom-fileupload.js"></script>
+
+        </environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
+
+        @RenderSection("Scripts", required: false)
+    </div>
+</body>
+</html>

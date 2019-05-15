@@ -1,0 +1,107 @@
+﻿
+
+@model List<ViewProduct>
+
+<h2>My Cart</h2>
+<br>
+<br>
+@*<div>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SKU)
+        </th>
+        :
+    </div>*@
+<br>
+<form asp-controller="Orders" asp-action="CreateOrderFromCart" asp-route-PaymentType="On Delivery" asp-route-Name="Order Of " id="myCartForm">
+    @{float totalPrice = 0;
+        @foreach (var item in ViewData["ViewProduct"] as List<ViewProduct>)
+        {
+
+            float subtotal = item.Price * (item.Quantity);
+            totalPrice = totalPrice + subtotal;
+            <div class="container">
+                <table id="cart" class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th style="width:45%">Product</th>
+                            <th style="width:10%">Price</th>
+                            <th style="width:13%">Quantity</th>
+                            <th style="width:22%" class="text-center">Subtotal</th>
+                            <th style="width:10%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-th="Product">
+                                <div class="row">
+                                    <div class="col-sm-2 hidden-xs"><img src="@item.ImagePath" alt="..." class="img-responsive" /></div>
+                                    <div class="col-sm-10">
+                                        <h4 class="nomargin">@Html.DisplayFor(modelItem => item.Name)</h4>
+                                        <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-th="Price">@Html.DisplayFor(modelItem => item.Price) €</td>
+                            <td data-th="Quantity">
+                                <div>
+                                    <button type="button" class="btn-minus" onclick="ClickMinus(this)"><span class="glyphicon glyphicon-minus"></span></button>
+                                    <input readonly id="input-@item.SKU" value="@Html.DisplayFor(modelItem => item.Quantity)" style="width:30px" />
+                                    <button type="button" class="btn-plus" onclick="ClickPlus(this)"><span class="glyphicon glyphicon-plus"></span></button>
+                                </div>
+                            </td>
+                            <td id="subtotal-@item.SKU" data-th="Subtotal" class="text-center">@subtotal €</td>
+                            <td class="actions" data-th="">
+                                <button type="button" onclick="AddToCart('@item.SKU', parseInt($('#input-@item.SKU').val())-@item.Quantity, true)" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        }}
+    <div class="container">
+        <table id="cart" class="table table-hover table-condensed">
+            <tfoot>
+                <tr class="visible-xs">
+                    <td class="text-center"><strong>Total Price</strong></td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                    <td colspan="2" class="hidden-xs"></td>
+                    <td class="hidden-xs text-center"><strong>Total Price: @totalPrice €</strong></td>
+                    <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    @if ((ViewData["ViewProduct"] as List<ViewProduct>).Any())
+    {
+        <div class="form-group">
+            <input type="submit" value="Submit Order" onclick="showAlert();" class="btn btn-default" form="myCartForm" id="submitbutton" />
+            <div class="container" style="display:none;" id="myAlert">
+                <h2>Your order has to be validated</h2>
+                <div class="alert alert-success alert-dismissable" id="myAlert2">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Please Wait while we are validating your Order
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="form-group">
+            <input type="button" value="Submit Order" class="btn btn-default" id="submitbutton" />
+        </div>
+    }
+</form>
+<script src="~/js/site.js" defer="defer"></script>
+<script>
+    function showAlert() {
+        if ($("#myAlert").find("div#myAlert2").length == 0) {
+            $("#myAlert").append("<div class='alert alert-success alert-dismissable' id='myAlert2'> <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button> Success! message sent successfully.</div>");
+        }
+        $("#myAlert").css("display", "");
+    }
+</script>
+
+

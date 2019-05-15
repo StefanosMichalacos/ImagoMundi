@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.Rendering
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@model Cart
+<script defer="defer">
+    function UpdateCartBadgeCount(id) {
+        var count = 0;
+        $.ajax({
+            type: 'GET',
+            url: '/Carts/GetCartCount',
+
+            contentType: "application/json",
+            dataType: 'json'
+        }).then(function (response) {
+            console.log(response);
+            document.getElementById("cartBadge").innerHTML = response;
+            count = response;
+        });
+        return count;
+    }
+</script>
+@if (SignInManager.IsSignedIn(User))
+{
+    <script>
+        document.onreadystatechange = function () {
+            UpdateCartBadgeCount("@UserManager.GetUserAsync(User).Result.Id");
+        };
+    </script>
+<a type="button" class="whiteColored cartButton" asp-controller="Carts" asp-action="MyCart" >
+    Cart
+    <span id="cartBadge" class="badge badge-light">
+        0
+    </span>
+</a>
+}

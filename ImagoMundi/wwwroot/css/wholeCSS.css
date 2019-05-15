@@ -1,0 +1,133 @@
+﻿.topSellerBar {
+    width: 80%;
+    background: #3C444C;
+    display: flex;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.topSellerLabel {
+    font-weight: bold;
+    font-size: 25px;
+    color: white;
+    margin:auto;
+
+}
+.topSellerPanel {
+    margin-top: 5%;
+    
+}
+.showItem{
+    margin-bottom:5%;
+
+}
+.imageCard {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+.cardColor {
+    background: #efefef;
+    padding: 2%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 390px;
+}
+.addCartButton {
+    margin-left: 70%;
+    background-color: lightgray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.productImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: solid gray;
+}
+.largeImage{
+    width:600px;
+}
+
+/*-----------Custom Continent country filter dropdown ----------*/
+
+.open > .dropdown-menu {
+    max-height: 300px !important;
+    
+}
+
+/*--------------- SearchBar --------------------------------------*/
+.searchbar {
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 50px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    display: flex;
+}
+
+.search_input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color: transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    transition-delay: 1s;
+}
+
+.searchbar:hover > .search_input {
+    width: 300px;
+    caret-color: #3C444C;
+    transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon {
+    background: white;
+    color: #3C444C;
+}
+
+.search_icon {
+    height: 30px;
+    width: 30px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    background: transparent;
+    border-color: transparent;
+}
+.searchIconBar{
+    margin:auto;
+}
+.productImageMyCart {
+    display: block;
+    width: 15%;
+    height: auto;
+    margin-left: unset;
+    margin-right: unset;
+    border: solid gray;
+}
+
+/*----------*/
+.slider.slider-horizontal .slider-handle {
+    background: #3C444C !important;
+}
+/*--------- breadcrumb-------------------------------*/
+.imagoBreadcrumb {
+    background: transparent;
+}
+/*------------------------------  Search Result View ---------------------------------*/
+.notResultRow{
+    display:flex;
+}
+.resultMessage{
+    margin:auto;
+}
+

@@ -1,0 +1,39 @@
+﻿body {
+}
+.backgroundSetUp {
+    background-color: lightgrey
+}
+.themeNavColor1 {
+    background: lightgrey;
+}
+.container{
+    padding:0px;
+}
+.justifyTop {
+    margin-top: 5%;
+}
+.just_cont {
+    padding-top: 12%;
+    height: -webkit-fill-available;
+
+}
+.fixPhotoPosition {
+    margin-top: -7%;
+}
+.colorizeNavBar {
+    background-color: #3C444C;
+}
+.positionLoginPartial{
+    margin-right:50px;
+}
+.positionNavHeader{
+    padding-left:50px;
+}
+.postionFormLogout{
+    margin-right:0px;
+}
+
+.loginStyle {
+    color: lightgrey;
+}
+
