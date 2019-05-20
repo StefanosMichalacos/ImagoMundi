@@ -86,7 +86,7 @@ namespace ImagoMundi
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));//set your connection string  
+                    Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<AppUser, Role>(
                 options => options.Stores.MaxLengthForKeys = 128)
